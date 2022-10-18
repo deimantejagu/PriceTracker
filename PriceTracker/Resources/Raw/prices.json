@@ -2,8 +2,8 @@
   {
     "Name": "Viada",
     "Title": [
-      "D",
       "SND",
+      "D",
       "95"
     ],
     "Price": [
@@ -15,8 +15,8 @@
   {
     "Name": "CircleK",
     "Title": [
-      "D",
       "98",
+      "D",
       "95",
       "SND"
     ],
@@ -29,6 +29,17 @@
   },
   {
     "Name": "Neste",
+    "Title": [
+      "95",
+      "98"
+    ],
+    "Price": [
+      0.786,
+      2.987
+    ]
+  },
+  {
+    "Name": "Viada",
     "Title": [
       "D",
       "98"

@@ -1,4 +1,6 @@
 ﻿using PriceTracker.PriceScannerOCR;
+using PriceTracker.ViewModels;
+using PriceTracker.Models;
 
 namespace PriceTracker
 {
@@ -8,14 +10,15 @@ namespace PriceTracker
         public MainPage()
         {
             InitializeComponent();
-            readJson();
+            Data[] dataObjects = ReadJson();
+            BindingContext = new PriceViewModel(dataObjects);
         }
-
-        public void readJson()
+        public Data[] ReadJson()
         {
             DBScanner dBScanner = new DBScanner();
-            dBScanner.LoadJson();
+            Data[] dataObjects = dBScanner.LoadJson();
+
+            return dataObjects;
         }
     }
 }
-

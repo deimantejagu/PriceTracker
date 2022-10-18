@@ -1,21 +1,44 @@
 ﻿using Newtonsoft.Json;
-using PriceTracker.PriceScannerOCR;
+using PriceTracker.Models;
 
 namespace PriceTracker.PriceScannerOCR
 {
     public class DBScanner
     {
-        public void LoadJson()
+        public Data[] LoadJson()
         {
-            string fileName = "prices.json";
-            string jsonString = File.ReadAllText(fileName);
-            //Data data = JsonSerializer.Deserialize<Data>(jsonString)!;
 
-            //Console.WriteLine($"Name: {data.Name}");
-            //Console.WriteLine($"Title: {data.Title}");
-            //Console.WriteLine($"Price: {data.Price}");
+            //using var stream = await FileSystem.OpenAppPackageFileAsync("prices.json");
+            //using var reader = new StreamReader(stream);
 
-            Console.WriteLine(jsonString);
+            //var contents = reader.ReadToEnd();
+
+            //string contents = File.ReadAllText("prices.json");
+
+            //string contents = ReadTextFile("prices.json");
+
+            //Task<string> readPrices = ReadTextFile("prices.json");
+
+            string contents = ReadTextFile("prices.json").Result;
+
+            Data[] workingFromJson = JsonConvert.DeserializeObject<Data[]>(contents);
+            foreach (Data data in workingFromJson)
+            {
+                data.PrintInfo();
+            }
+
+            return workingFromJson;
+        }
+
+        private async Task<string> ReadTextFile(string filePath)
+        {
+            using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(filePath);
+            using StreamReader reader = new StreamReader(fileStream);
+
+            // Works, but dont know why!? And how :D
+            string result = reader.ReadToEnd();
+
+            return result;
         }
     }
 }
