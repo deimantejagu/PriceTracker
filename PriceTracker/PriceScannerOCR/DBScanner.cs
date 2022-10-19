@@ -7,18 +7,6 @@ namespace PriceTracker.PriceScannerOCR
     {
         public Data[] LoadJson()
         {
-
-            //using var stream = await FileSystem.OpenAppPackageFileAsync("prices.json");
-            //using var reader = new StreamReader(stream);
-
-            //var contents = reader.ReadToEnd();
-
-            //string contents = File.ReadAllText("prices.json");
-
-            //string contents = ReadTextFile("prices.json");
-
-            //Task<string> readPrices = ReadTextFile("prices.json");
-
             string contents = ReadTextFile("prices.json").Result;
 
             Data[] workingFromJson = JsonConvert.DeserializeObject<Data[]>(contents);

@@ -12,11 +12,12 @@ namespace PriceTracker.ViewModels
             }
         }
 
+        public List<Data> data { get; set; } = new List<Data>();
+
         private void addDataItem(string name, string[] title, string[] price)
         {
             data.Add(new Data(name, title, price));
         }
 
-        public List<Data> data { get; set; } = new List<Data>();
     }
 }
