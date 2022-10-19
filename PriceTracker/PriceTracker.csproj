@@ -63,6 +63,12 @@
 	  <Resource Include="Resources\Raw\prices.json" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="FilterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionPriceTrackerHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>

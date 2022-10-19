@@ -6,9 +6,15 @@
     xmlns:local="clr-namespace:PriceTracker"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar x:Name="Home">
+        <Tab Title="Fuel Prices" Icon="home_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"></ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate local:FilterPage}" Route="FilterPage"></ShellContent>
+        </Tab>
+
+        <Tab Title="Filter Data" Icon="search_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:FilterPage}" Route="FilterPage"></ShellContent>
+        </Tab>
+    </TabBar>
 
 </Shell>

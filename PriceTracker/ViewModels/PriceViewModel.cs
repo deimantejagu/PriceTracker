@@ -4,7 +4,7 @@ namespace PriceTracker.ViewModels
 {
     public class PriceViewModel
     {
-        public PriceViewModel(Data[] data)
+        public PriceViewModel(List<Data> data)
         {
             foreach (var item in data)
             {
@@ -14,7 +14,7 @@ namespace PriceTracker.ViewModels
 
         public List<Data> data { get; set; } = new List<Data>();
 
-        private void addDataItem(string name, string[] title, string[] price)
+        private void addDataItem(string name, List<string> title, List<string> price)
         {
             data.Add(new Data(name, title, price));
         }

@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PriceTracker.PriceScannerOCR"
              x:Class="PriceTracker.MainPage">
-    
+
     <CollectionView ItemsSource="{Binding data}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid Margin="0,0,0,3" RowSpacing="2" ColumnSpacing="10" Padding="2" BackgroundColor="AliceBlue">
+                <Grid Margin="0,0,0,4" RowSpacing="2" ColumnSpacing="10" Padding="10" BackgroundColor="AliceBlue">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
@@ -22,8 +22,8 @@
                     </Grid.RowDefinitions>
 
                     <Label Grid.Column="0" TextColor="#000000" Text="{Binding Name}" FontAttributes="Bold" />
-                    <ListView Grid.Column="1" SeparatorVisibility="None" ItemsSource="{Binding Title}" />
-                    <ListView Grid.Column="2" SeparatorVisibility="None" ItemsSource="{Binding Price}" />
+                    <CollectionView Grid.Column="1" ItemsSource="{Binding Title}" />
+                    <CollectionView Grid.Column="2" ItemsSource="{Binding Price}" />
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
