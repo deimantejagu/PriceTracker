@@ -72,7 +72,7 @@ namespace PriceTracker.ViewModels
 
                 filters.FilterByNames.Add(name);
 
-                filters.ApplyFilters(jsonDataReader.GetJsonData(), jsonDataReader);
+                filters.ApplyFilters(jsonDataReader);
 
                 //List<GasStationDataModel> Data = filters.FilterByName(jsonDataReader.GetJsonData());
                 //jsonDataReader.GasStationData.Clear();
@@ -105,7 +105,7 @@ namespace PriceTracker.ViewModels
 
                 //filters.ApplyFilters()
 
-                filters.ApplyFilters(jsonDataReader.GetJsonData(), jsonDataReader);
+                filters.ApplyFilters(jsonDataReader);
 
                 //List<GasStationDataModel> Data = filters.FilterByTitleMultiple(jsonDataReader.GetJsonData());
 

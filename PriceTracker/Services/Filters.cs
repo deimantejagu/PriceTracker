@@ -14,21 +14,19 @@ namespace PriceTracker.Services
             FilterByFuelTypes = new List<string>();
         }
 
-        public void ApplyFilters(ObservableCollection<GasStationDataModel> GasStationData, JsonDataReader jsonDataReader)
+        public void ApplyFilters(JsonDataReader jsonDataReader)
         {
-            //List<GasStationDataModel> Data = jsonDataReader.GetJsonData();
-
-            // Gauti duomenu lista observable ir paleist pro filtrus
+            ObservableCollection<GasStationDataModel> GasStationData = jsonDataReader.GetJsonData();
+            List<GasStationDataModel> NewList = GasStationData.ToList();
 
             if (FilterByFuelTypes.Count > 0)
-                FilterByFuelType(GasStationData);
+                NewList = FilterByFuelType(GasStationData);
 
             if (FilterByNames.Count > 0)
-                FilterByName(GasStationData);
+                NewList = FilterByName(GasStationData);
 
-            List<GasStationDataModel> Data = FilterByFuelType(jsonDataReader.GetJsonData());
-            //jsonDataReader.GasStationData.Clear();
-            foreach (var data in Data.ToList())
+            jsonDataReader.GasStationData.Clear();
+            foreach (var data in FilterUnnecessaryData(NewList))
             {
                 jsonDataReader.GasStationData.Add(data);
             }
@@ -44,11 +42,9 @@ namespace PriceTracker.Services
 
         public List<GasStationDataModel> FilterByFuelType(ObservableCollection<GasStationDataModel> StationData)
         {
-            List<GasStationDataModel> GasStationData = StationData.ToList();
-
-            foreach (var fuelType in GasStationData.ToList())
+            foreach (var fuelType in StationData.ToList())
             {
-                int dataIndex = GasStationData.IndexOf(fuelType);
+                int dataIndex = StationData.IndexOf(fuelType);
 
                 foreach (var title in fuelType.Fueltype.ToList())
                 {
@@ -56,13 +52,13 @@ namespace PriceTracker.Services
                     {
                         int index = fuelType.Fueltype.IndexOf(title);
 
-                        GasStationData[dataIndex].Fueltype.Remove(title);
-                        GasStationData[dataIndex].Price.Remove(fuelType.Price[index]);
+                        StationData[dataIndex].Fueltype.Remove(title);
+                        StationData[dataIndex].Price.Remove(fuelType.Price[index]);
                     }
                 }
             }
 
-            return FilterUnnecessaryData(GasStationData);
+            return StationData.ToList();
         }
 
         private List<GasStationDataModel> FilterUnnecessaryData(List<GasStationDataModel> GasStationData)
