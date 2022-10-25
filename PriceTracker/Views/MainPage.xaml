@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PriceTracker.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:PriceTracker.Models"
+             xmlns:viewmodel="clr-namespace:PriceTracker.ViewModels"
+             x:DataType="viewmodel:GasStationDataViewModel"
+             Title="">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding GasStationData}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:GasStationDataModel">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125" Style="{StaticResource CardView}" BackgroundColor="#FAFAFA" HasShadow="True" BorderColor="#B7C13A">
+                            <Grid Padding="0" ColumnDefinitions="125,125,*">
+                                <Label Text="{Binding GasStationName}"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       Padding="20"
+                                       FontSize="Title"
+                                       TextColor="#000000"/>
+                                <VerticalStackLayout
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <CollectionView Style="{StaticResource LargeLabel}" ItemsSource="{Binding Fueltype}" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout
+                                    VerticalOptions="Center"
+                                    Grid.Column="2"
+                                    Padding="10">
+                                    <CollectionView Style="{StaticResource LargeLabel}" ItemsSource="{Binding Price}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Unfilter All" 
+                Command="{Binding UnfilterAllCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+    </Grid>
+</ContentPage>

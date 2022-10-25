@@ -3,18 +3,8 @@
     x:Class="PriceTracker.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:PriceTracker"
+    xmlns:views="clr-namespace:PriceTracker.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <TabBar x:Name="Home">
-        <Tab Title="Fuel Prices" Icon="home_icon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"></ShellContent>
-            <ShellContent ContentTemplate="{DataTemplate local:FilterPage}" Route="FilterPage"></ShellContent>
-        </Tab>
-
-        <Tab Title="Filter Data" Icon="search_icon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:FilterPage}" Route="FilterPage"></ShellContent>
-        </Tab>
-    </TabBar>
 
 </Shell>

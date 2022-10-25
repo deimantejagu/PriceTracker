@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PriceTracker.Views.FilterPage"
+             xmlns:model="clr-namespace:PriceTracker.Models"
+             xmlns:viewmodel="clr-namespace:PriceTracker.ViewModels"
+             x:DataType="viewmodel:FilterViewModel"
+             Title="">
+
+    <VerticalStackLayout>
+        <Button IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BorderColor="#FAFAFA"
+                BackgroundColor="#FAFAFA"
+                HeightRequest="20"/>
+        
+        <Border StrokeThickness="4"
+            StrokeShape="RoundRectangle 100,0,0,100"
+            Background="#B7C13A"
+            Padding="16,10"
+            HorizontalOptions="Center">
+                <Border.Stroke>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Orange"
+                              Offset="0.1" />
+                        <GradientStop Color="Brown"
+                              Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Stroke>
+                <Label Text="               Filer By Title:               "
+               TextColor="Black"
+               FontSize="18"
+               FontAttributes="Bold" />
+        </Border>
+        
+        <Button Text="Viada" 
+                Command="{Binding FilterViadaCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button Text="CircleK" 
+                Command="{Binding FilterCircleKCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button Text="Neste" 
+                Command="{Binding FilterNesteCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BorderColor="#FAFAFA"
+                BackgroundColor="#FAFAFA"
+                HeightRequest="20"/>
+
+        <Border StrokeThickness="4"
+            StrokeShape="RoundRectangle 100,0,0,100"
+            Background="#B7C13A"
+            Padding="16,10"
+            HorizontalOptions="Center">
+            <Border.Stroke>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Orange"
+                              Offset="0.1" />
+                    <GradientStop Color="Brown"
+                              Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Label Text="           Filer By Fuel Type:           "
+               TextColor="Black"
+               FontSize="18"
+               FontAttributes="Bold" />
+        </Border>
+
+        <Button Text="98" 
+                IsEnabled="{Binding IsNotBusy}"
+                Command="{Binding Filter98Command}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button Text="95" 
+                IsEnabled="{Binding IsNotBusy}"
+                Command="{Binding Filter95Command}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button Text="D" 
+                IsEnabled="{Binding IsNotBusy}"
+                Command="{Binding FilterDCommand}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <Button Text="SND" 
+                IsEnabled="{Binding IsNotBusy}"
+                Command="{Binding FilterSNDCommand}"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </VerticalStackLayout>
+</ContentPage>
