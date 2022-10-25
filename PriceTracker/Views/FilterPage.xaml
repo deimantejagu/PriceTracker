@@ -28,7 +28,7 @@
                               Offset="1.0" />
                     </LinearGradientBrush>
                 </Border.Stroke>
-                <Label Text="               Filer By Title:               "
+                <Label Text="               Filter By Title:               "
                TextColor="Black"
                FontSize="18"
                FontAttributes="Bold" />
@@ -87,7 +87,7 @@
                               Offset="1.0" />
                 </LinearGradientBrush>
             </Border.Stroke>
-            <Label Text="           Filer By Fuel Type:           "
+            <Label Text="           Filter By Fuel Type:           "
                TextColor="Black"
                FontSize="18"
                FontAttributes="Bold" />

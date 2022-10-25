@@ -1,25 +1,48 @@
 ﻿using PriceTracker.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PriceTracker.Services
 {
     public class Filters
     {
-        public List<GasStationDataModel> FilterByName(ObservableCollection<GasStationDataModel> GasStationData, string gasStationName)
-        {
-            List<GasStationDataModel> FilteredData = (from GasStationDataModel data in GasStationData
-                                                      where data.GasStationName == gasStationName
-                                         select data).ToList();
+        public List<string> FilterByNames { get; set; }
+        public List<string> FilterByFuelTypes { get; set; }
 
-            return FilteredData;
+        public Filters()
+        {
+            FilterByNames = new List<string>();
+            FilterByFuelTypes = new List<string>();
         }
 
-        public List<GasStationDataModel> FilterByTitle(ObservableCollection<GasStationDataModel> StationData, string name)
+        public void ApplyFilters(ObservableCollection<GasStationDataModel> GasStationData, JsonDataReader jsonDataReader)
+        {
+            //List<GasStationDataModel> Data = jsonDataReader.GetJsonData();
+
+            // Gauti duomenu lista observable ir paleist pro filtrus
+
+            if (FilterByFuelTypes.Count > 0)
+                FilterByFuelType(GasStationData);
+
+            if (FilterByNames.Count > 0)
+                FilterByName(GasStationData);
+
+            List<GasStationDataModel> Data = FilterByFuelType(jsonDataReader.GetJsonData());
+            //jsonDataReader.GasStationData.Clear();
+            foreach (var data in Data.ToList())
+            {
+                jsonDataReader.GasStationData.Add(data);
+            }
+        }
+
+        public List<GasStationDataModel> FilterByName(ObservableCollection<GasStationDataModel> GasStationData)
+        {
+            IEnumerable<GasStationDataModel> FilteredData = 
+                GasStationData.Where(item => FilterByNames.Any(name => name == item.GasStationName));
+
+            return FilteredData.ToList();
+        }
+
+        public List<GasStationDataModel> FilterByFuelType(ObservableCollection<GasStationDataModel> StationData)
         {
             List<GasStationDataModel> GasStationData = StationData.ToList();
 
@@ -27,9 +50,9 @@ namespace PriceTracker.Services
             {
                 int dataIndex = GasStationData.IndexOf(fuelType);
 
-                foreach (string title in fuelType.Fueltype.ToList())
+                foreach (var title in fuelType.Fueltype.ToList())
                 {
-                    if (title != name)
+                    if (! FilterByFuelTypes.Any(filter => filter == title))
                     {
                         int index = fuelType.Fueltype.IndexOf(title);
 

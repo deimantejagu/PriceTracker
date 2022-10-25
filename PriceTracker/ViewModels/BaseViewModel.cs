@@ -18,6 +18,7 @@ namespace PriceTracker.ViewModels
 
         protected JsonDataReader jsonDataReader;
         protected Filters filters;
+
         public Command FilterViadaCommand { get; set; }
         public Command FilterCircleKCommand { get; set; }
         public Command FilterNesteCommand { get; set; }
@@ -60,7 +61,7 @@ namespace PriceTracker.ViewModels
             }
         }
 
-        protected async Task FilterMonkeysAsync(string name)
+        protected async Task FilterGasStationsAsync(string name)
         {
             if (IsBusy)
                 return;
@@ -69,12 +70,16 @@ namespace PriceTracker.ViewModels
             {
                 IsBusy = true;
 
-                List<GasStationDataModel> Data = filters.FilterByName(jsonDataReader.GasStationData, name);
-                jsonDataReader.GasStationData.Clear();
-                foreach (var data in Data.ToList())
-                {
-                    jsonDataReader.GasStationData.Add(data);
-                }
+                filters.FilterByNames.Add(name);
+
+                filters.ApplyFilters(jsonDataReader.GetJsonData(), jsonDataReader);
+
+                //List<GasStationDataModel> Data = filters.FilterByName(jsonDataReader.GetJsonData());
+                //jsonDataReader.GasStationData.Clear();
+                //foreach (var data in Data.ToList())
+                //{
+                //    jsonDataReader.GasStationData.Add(data);
+                //}
             }
             catch (Exception ex)
             {
@@ -87,7 +92,7 @@ namespace PriceTracker.ViewModels
             }
         }
 
-        protected async Task FilterMonkeysTypesAsync(string name)
+        protected async Task FilterFuelTypesAsync(string name)
         {
             if (IsBusy)
                 return;
@@ -96,13 +101,19 @@ namespace PriceTracker.ViewModels
             {
                 IsBusy = true;
 
-                List<GasStationDataModel> Data = filters.FilterByTitle(jsonDataReader.GasStationData, name);
+                filters.FilterByFuelTypes.Add(name);
 
-                jsonDataReader.GasStationData.Clear();
-                foreach (var data in Data.ToList())
-                {
-                    jsonDataReader.GasStationData.Add(data);
-                }
+                //filters.ApplyFilters()
+
+                filters.ApplyFilters(jsonDataReader.GetJsonData(), jsonDataReader);
+
+                //List<GasStationDataModel> Data = filters.FilterByTitleMultiple(jsonDataReader.GetJsonData());
+
+                //jsonDataReader.GasStationData.Clear();
+                //foreach (var data in Data.ToList())
+                //{
+                //    jsonDataReader.GasStationData.Add(data);
+                //}
             }
             catch (Exception ex)
             {

@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PriceTracker.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PriceTracker.Services
 {
@@ -16,10 +11,10 @@ namespace PriceTracker.Services
         public JsonDataReader()
         {
             GasStationData = new ObservableCollection<GasStationDataModel>();
-            GasStationData = GetMonkeys();
+            GasStationData = GetJsonData();
         }
 
-        public ObservableCollection<GasStationDataModel> GetMonkeys()
+        public ObservableCollection<GasStationDataModel> GetJsonData()
         {
             string contents = ReadTextFile("prices.json").Result;
 
