@@ -74,16 +74,10 @@ namespace PriceTracker.ViewModels
 
                 filters.ApplyFilters(jsonDataReader);
 
-                //List<GasStationDataModel> Data = filters.FilterByName(jsonDataReader.GetJsonData());
-                //jsonDataReader.GasStationData.Clear();
-                //foreach (var data in Data.ToList())
-                //{
-                //    jsonDataReader.GasStationData.Add(data);
-                //}
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
+                Debug.WriteLine($"Unable to get data: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
             }
             finally
@@ -103,21 +97,12 @@ namespace PriceTracker.ViewModels
 
                 filters.FilterByFuelTypes.Add(name);
 
-                //filters.ApplyFilters()
-
                 filters.ApplyFilters(jsonDataReader);
 
-                //List<GasStationDataModel> Data = filters.FilterByTitleMultiple(jsonDataReader.GetJsonData());
-
-                //jsonDataReader.GasStationData.Clear();
-                //foreach (var data in Data.ToList())
-                //{
-                //    jsonDataReader.GasStationData.Add(data);
-                //}
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
+                Debug.WriteLine($"Unable to get data: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
             }
             finally

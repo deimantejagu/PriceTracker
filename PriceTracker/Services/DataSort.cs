@@ -4,12 +4,31 @@ namespace PriceTracker.Services
 {
     public class DataSort
     {
-        public List<GasStationDataModel> SortList(List<GasStationDataModel> gasStationData)
+        public static void SortList(List<GasStationDataModel> GasStationData)
         {
-            //gasStationData.Sort((p1, p2) => p1.Price.CompareTo(p2.Price));
-            //gasStationData.Sort(delegate (GasStationDataModel c1, GasStationDataModel c2) { return c1.Price.CompareTo(c2.Price); });
+            for (var i = 0; i < GasStationData.Count - 1; i++)
+            {
+                for (var j = 0; j < GasStationData.Count - i - 1; j++)
+                {
+                    var price1 = ConvertToDouble(GasStationData, j);
+                    var price2 = ConvertToDouble(GasStationData, j + 1);
+                    if (price1 > price2)
+                    {
+                        var temp = GasStationData[j];
+                        GasStationData[j] = GasStationData[j + 1];
+                        GasStationData[j + 1] = temp;
+                    }
+                }
+            }
 
-            return gasStationData;
+        }
+
+        private static double ConvertToDouble(List<GasStationDataModel> GasStationData, int objectIndex)
+        {
+            if (GasStationData[objectIndex].Price.Count > 0)
+                return Convert.ToDouble(GasStationData[objectIndex].Price[0]);
+
+            return 0;
         }
     }
 }

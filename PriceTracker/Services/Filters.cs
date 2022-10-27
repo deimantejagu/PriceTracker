@@ -1,5 +1,6 @@
 ﻿using PriceTracker.Models;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace PriceTracker.Services
 {
@@ -24,6 +25,8 @@ namespace PriceTracker.Services
 
             if (FilterByNames.Count > 0)
                 NewList = FilterByName(GasStationData);
+
+            DataSort.SortList(NewList);
 
             jsonDataReader.GasStationData.Clear();
             foreach (var data in FilterUnnecessaryData(NewList))

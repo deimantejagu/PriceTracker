@@ -59,7 +59,7 @@ namespace PriceTracker.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get stations: {ex.Message}");
+                Debug.WriteLine($"Unable to get data: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
             }
             finally
