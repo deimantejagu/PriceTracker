@@ -5,6 +5,7 @@
              xmlns:model="clr-namespace:PriceTracker.Models"
              xmlns:viewmodel="clr-namespace:PriceTracker.ViewModels"
              x:DataType="viewmodel:GasStationDataViewModel"
+             NavigationPage.HasBackButton="False"
              Title="">
 
     <Grid
@@ -45,11 +46,25 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
         <Button Text="Unfilter All" 
                 Command="{Binding UnfilterAllCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="2"
-                Grid.ColumnSpan="2"
+                Grid.Column="0"
+                BackgroundColor="#B7C13A"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+        
+        <Button Text="Add Image" 
+                x:Name="PickImage"
+                Command="{Binding UnfilterAllCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Clicked="Add_Image_Button_Clicked"
+                Grid.Row="2"
+                Grid.Column="1"
                 BackgroundColor="#B7C13A"
                 FontAttributes="Bold"
                 TextColor="Black"

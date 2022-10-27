@@ -8,21 +8,15 @@ namespace PriceTracker.Services
         {
             for (var i = 0; i < GasStationData.Count - 1; i++)
             {
-                for (var j = 0; j < GasStationData.Count - i - 1; j++)
+                for (var j = 0; j < (GasStationData.Count - i - 1); j++)
                 {
                     var price1 = ConvertToDouble(GasStationData, j);
                     var price2 = ConvertToDouble(GasStationData, j + 1);
                     if (price1 > price2)
-                    {
-                        var temp = GasStationData[j];
-                        GasStationData[j] = GasStationData[j + 1];
-                        GasStationData[j + 1] = temp;
-                    }
+                        (GasStationData[j + 1], GasStationData[j]) = (GasStationData[j], GasStationData[j + 1]);
                 }
             }
-
         }
-
         private static double ConvertToDouble(List<GasStationDataModel> GasStationData, int objectIndex)
         {
             if (GasStationData[objectIndex].Price.Count > 0)

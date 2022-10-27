@@ -51,18 +51,4 @@
             </Style>
         </ResourceDictionary>
     </Application.Resources>
-
-    <Application.MainPage>
-        <Shell>
-            <TabBar>
-                <ShellContent Title="Home"
-                     Icon="home1.png"
-                     ContentTemplate="{DataTemplate local:MainPage}" />
-                <ShellContent Title="Filters"
-                     Icon="filter1.png"
-                     ContentTemplate="{DataTemplate local:FilterPage}" />
-            </TabBar>
-        </Shell>
-    </Application.MainPage>
-
 </Application>

@@ -49,15 +49,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\lock1.svg" />
+	  <None Remove="Resources\Images\station.svg" />
+	  <None Remove="Resources\Images\user1.svg" />
 	  <None Remove="Resources\Raw\prices.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="CefSharp.Common" Version="106.0.290" />
 	  <PackageReference Include="CommunityToolkit.Common" Version="8.0.0" />
+	  <PackageReference Include="Grpc.Core" Version="2.46.5" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.3.32804.24" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+	  <PackageReference Include="SendGrid" Version="9.28.1" />
+	  <PackageReference Include="System.ObjectModel" Version="4.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -68,11 +75,14 @@
 	  <MauiXaml Update="Views\FilterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionPriceTrackerHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarPriceTrackerHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionPriceTrackerHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarPriceTrackerHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionPriceTrackerHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
